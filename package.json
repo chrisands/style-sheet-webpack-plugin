@@ -1,0 +1,42 @@
+{
+  "name": "style-sheet-webpack-plugin",
+  "version": "0.1.0",
+  "description": "Webpack plugin for style-sheet CSS extraction",
+  "repository": "https://github.com/chrisands/style-sheet-webpack-plugin",
+  "author": "Andrey Osiyuk <osiyuk@protonmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "webpack-plugin",
+    "webpack",
+    "css-in-js",
+    "css in js",
+    "stylesheet",
+    "css",
+    "react native styles",
+    "babel-plugin",
+    "atomic css"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "rm -rf ./lib/*",
+    "prepublish": "yarn clean && yarn build",
+    "lint": "eslint src",
+    "format": "prettier --single-quote --trailing-comma=es5 --no-semi --write all *.js src/*.js"
+  },
+  "dependencies": {
+    "style-sheet": "^4.0.4",
+    "webpack-sources": "^1.4.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "eslint": "^6.6.0",
+    "prettier": "^1.19.1",
+    "rollup": "^1.27.0",
+    "rollup-plugin-babel": "^4.3.3"
+  }
+}
