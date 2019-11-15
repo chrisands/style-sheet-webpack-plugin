@@ -1,5 +1,5 @@
 import { RawSource } from 'webpack-sources'
-import StyleSheet from 'style-sheet'
+import { getCss } from 'style-sheet/babel'
 
 class StyleSheetPlugin {
   constructor(options = {}) {
@@ -26,10 +26,7 @@ class StyleSheetPlugin {
     })
 
     compiler.hooks.emit.tap('StyleSheetPlugin', compilation => {
-      compilation.emitAsset(
-        this.options.filename,
-        new RawSource(StyleSheet.getCss())
-      )
+      compilation.emitAsset(this.options.filename, new RawSource(getCss()))
     })
   }
 }
