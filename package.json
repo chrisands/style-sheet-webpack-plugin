@@ -37,6 +37,7 @@
     "eslint": "^6.6.0",
     "prettier": "^1.19.1",
     "rollup": "^1.27.0",
-    "rollup-plugin-babel": "^4.3.3"
+    "rollup-plugin-babel": "^4.3.3",
+    "webpack": "^4.41.2"
   }
 }
