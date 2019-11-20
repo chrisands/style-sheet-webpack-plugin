@@ -13,7 +13,7 @@ class StyleSheetPlugin {
 
   // Replaces [hash] with actual hash
   getFilename(compilation) {
-    const { hash } = compilation.getState()
+    const { hash } = compilation.getStats()
     const { filename } = this.options
 
     return filename.replace(/(.+)\[hash\](.+)/, `$1${hash}$2`)
@@ -36,7 +36,10 @@ class StyleSheetPlugin {
 
     // Emit css file
     compiler.hooks.emit.tap('StyleSheetPlugin', compilation => {
-      compilation.emitAsset(this.getFilename(compilation), new RawSource(getCss()))
+      compilation.emitAsset(
+        this.getFilename(compilation),
+        new RawSource(getCss())
+      )
     })
   }
 }
