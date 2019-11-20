@@ -11,6 +11,14 @@ class StyleSheetPlugin {
     )
   }
 
+  // Replaces [hash] with actual hash
+  getFilename(compilation) {
+    const { hash } = compilation.getState()
+    const { filename } = this.options
+
+    return filename.replace(/(.+)\[hash\](.+)/, `$1${hash}$2`)
+  }
+
   apply(compiler) {
     compiler.hooks.compilation.tap('StyleSheetPlugin', compilation => {
       // Add css file to chunk
@@ -21,14 +29,14 @@ class StyleSheetPlugin {
           chunkGroups[0].origins.length > 0 &&
           chunkGroups[0].origins[0].request === null
         ) {
-          chunkGroups[0].chunks[0].files.push(this.options.filename)
+          chunkGroups[0].chunks[0].files.push(this.getFilename(compilation))
         }
       })
     })
 
     // Emit css file
     compiler.hooks.emit.tap('StyleSheetPlugin', compilation => {
-      compilation.emitAsset(this.options.filename, new RawSource(getCss()))
+      compilation.emitAsset(this.getFilename(compilation), new RawSource(getCss()))
     })
   }
 }
