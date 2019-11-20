@@ -13,6 +13,7 @@ class StyleSheetPlugin {
 
   apply(compiler) {
     compiler.hooks.compilation.tap('StyleSheetPlugin', compilation => {
+      // Add css file to chunk
       compilation.hooks.additionalChunkAssets.tap('StyleSheetPlugin', () => {
         const { chunkGroups } = compilation
         if (
@@ -25,6 +26,7 @@ class StyleSheetPlugin {
       })
     })
 
+    // Emit css file
     compiler.hooks.emit.tap('StyleSheetPlugin', compilation => {
       compilation.emitAsset(this.options.filename, new RawSource(getCss()))
     })
