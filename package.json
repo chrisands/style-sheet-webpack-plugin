@@ -1,6 +1,6 @@
 {
   "name": "style-sheet-webpack-plugin",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Webpack plugin for style-sheet CSS extraction",
   "repository": "https://github.com/chrisands/style-sheet-webpack-plugin",
   "author": "Andrey Osiyuk <osiyuk@protonmail.com>",
